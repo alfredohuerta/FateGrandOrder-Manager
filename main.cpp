@@ -7,10 +7,25 @@
 
 #include <stdio.h>
 #include <iostream>
-#include <organizacion.h>
+#include <vector>
+
+#include "organizacion.h"
 
 using namespace std;
 
+vector <int> datasheet1= {2,3,4,5,1,6};
+vector <string> datasheet2= {"Artoria", "Barghest", "Chiron"};
+
 int main(){
 
+    Organizar<int> org;
+
+    vector <int> prueba;
+
+    prueba= org.ordenarPorNumeros(datasheet1);
+
+    for(int i= 0; i < prueba.size(); i++){
+        cout << prueba[i] << ", ";
+    }
+    
 }

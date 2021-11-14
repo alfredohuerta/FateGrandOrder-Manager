@@ -5,27 +5,42 @@
 * El programa está diseñado para recibir un arreglo de datos y ordenarlos de menor a mayor y viceversa
 */
 
-#include <stdio.h>
 #include <iostream>
 #include <vector>
+#include <sstream>
+#include <fstream>
 
-#include "organizacion.h"
+#include "sorts.h"
 
 using namespace std;
 
-vector <int> datasheet1= {2,3,4,5,1,6};
-vector <string> datasheet2= {"Artoria", "Barghest", "Chiron"};
 
 int main(){
-
-    Organizar<int> org;
-
-    vector <int> prueba;
-
-    prueba= org.ordenarPorNumeros(datasheet1);
-
-    for(int i= 0; i < prueba.size(); i++){
-        cout << prueba[i] << ", ";
-    }
     
+    /*
+    * Se abre el archivo FGO_Servant_Data.csv y se almacenan los datos en el vector vidimencional data.
+    * 
+    * @param FGO_Servant_Data.csv is .csv document
+    * @param
+    * @return vector of vectors data
+    */
+    ifstream  servants;
+    servants.open("FGO_Servant_Data.csv");
+
+    vector<string> pj;
+    vector<vector<string>> data;
+    string line, word;
+
+    while(getline(servants, line)){
+            
+        stringstream s(line);
+
+        while(getline(s, word, ',')){
+        pj.push_back(word);
+        }
+
+        data.push_back(pj);
+        pj.clear();
+    }
+
 }

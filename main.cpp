@@ -9,6 +9,7 @@
 #include <fstream> //librería para leer el csv
 
 //#include "sorts.h"
+#include "estructuraslineales.h"
 
 using namespace std;
 
@@ -41,22 +42,4 @@ int main(){
         data.push_back(pj);
         pj.clear();
     }
-
-    /*Ordenar servantList;
-    int opcion;
-
-    cout << "Ingrese la accion que quiere llevar a cabo: ";
-    cin >> opcion;
-
-    switch (opcion)
-    {
-    case 1:
-        cout << "\n" << endl;
-        break;
-    
-    default:
-        break;
-    }*/
-
-    
 }

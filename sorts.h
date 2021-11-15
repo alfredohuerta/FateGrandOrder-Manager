@@ -1,15 +1,18 @@
+/*
+* Sorts: incluye el algoritmo de ordenamiento de tipo merge sort que ordenará los datos de un vector para el uso del
+* usuario. Los algoritmos ordenarán de menor a mayor y viceversar los datos de Ataque máximo, Nivel máximo, Vida máxima
+* y Nivel Máximo de los servants.
+* 
+* @file sorts.h
+* @author Erick Alfredo García Huerta - A01708119
+*/
+
 #ifndef SORTS_H_
 #define SORTS_H_
 
 #include <iostream>
 #include <vector>
 #include <sstream>
-
-/*
-* Sorts: incluye el algoritmo de ordenamiento de tipo merge sort que ordenará los datos de un vector
-* @file sorts.h
-* @author Erick Alfredo García Huerta - A01708119
-*/
 
 using namespace std;
 
@@ -20,7 +23,7 @@ class Ordenar{
         void mergeArray(vector<>&, vector<int>&, int, int, int);
         void mergeSplit(vector<int>&, vector<int>&, int, int);
     private:
-        vector<int> mergeSort(const vector<int>&);
+        vector<string> mergeSort(const vector<int>&);
 };
 
 /*
@@ -100,7 +103,7 @@ void Sorts :: mergeSplit(vector<> &A, vector<> &B, int low, int high){
     copyArray(A, B, low, high);
 }
 
-vector <> Sorts :: ordenaMerge(const vector<> &prueba){
+vector <string> Sorts :: ordenaMerge(const vector<vector<string>> &prueba){
     vector <> v(prueba);
     vector <> temp(v.size());
 

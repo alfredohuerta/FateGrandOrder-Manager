@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+{
+    "code-runner.ignoreSelection": true
+}

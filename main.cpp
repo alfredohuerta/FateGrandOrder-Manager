@@ -1,16 +1,14 @@
 /*
 * Alumno: Erick Alfredo García Huerta
 * Matrícula: A01708119
-* 
-* El programa está diseñado para recibir un arreglo de datos y ordenarlos de menor a mayor y viceversa
 */
 
 #include <iostream>
 #include <vector>
 #include <sstream>
-#include <fstream>
+#include <fstream> //librería para leer el csv
 
-#include "sorts.h"
+//#include "sorts.h"
 
 using namespace std;
 
@@ -24,6 +22,7 @@ int main(){
     * @param
     * @return vector of vectors data
     */
+
     ifstream  servants;
     servants.open("FGO_Servant_Data.csv");
 
@@ -36,11 +35,28 @@ int main(){
         stringstream s(line);
 
         while(getline(s, word, ',')){
-        pj.push_back(word);
+            pj.push_back(word);
         }
 
         data.push_back(pj);
         pj.clear();
     }
 
+    /*Ordenar servantList;
+    int opcion;
+
+    cout << "Ingrese la accion que quiere llevar a cabo: ";
+    cin >> opcion;
+
+    switch (opcion)
+    {
+    case 1:
+        cout << "\n" << endl;
+        break;
+    
+    default:
+        break;
+    }*/
+
+    
 }

@@ -10,6 +10,7 @@
 
 //#include "sorts.h"
 #include "estructuraslineales.h"
+#include "trees.h"
 
 using namespace std;
 
@@ -20,7 +21,6 @@ int main(){
     * Se abre el archivo FGO_Servant_Data.csv y se almacenan los datos en el vector vidimencional data.
     * 
     * @param FGO_Servant_Data.csv is .csv document
-    * @param
     * @return vector of vectors data
     */
 
@@ -41,5 +41,13 @@ int main(){
 
         data.push_back(pj);
         pj.clear();
+    }
+
+    Tree prueba("Foreigner", 8);
+
+    vector<string> test= prueba.find("Mash Kyrielight");
+
+    for(int i= 0; i < test.size(); i++){
+        cout << test[i] << "    ";
     }
 }

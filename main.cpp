@@ -10,6 +10,7 @@
 
 //#include "sorts.h"
 #include "estructuraslineales.h"
+#include "trees.h"
 
 using namespace std;
 
@@ -40,5 +41,13 @@ int main(){
 
         data.push_back(pj);
         pj.clear();
+    }
+
+    Tree prueba("Foreigner", 8);
+
+    vector<string> test= prueba.find("Mash Kyrielight");
+
+    for(int i= 0; i < test.size(); i++){
+        cout << test[i] << "    ";
     }
 }

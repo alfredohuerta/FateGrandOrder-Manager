@@ -20,7 +20,6 @@ int main(){
     * Se abre el archivo FGO_Servant_Data.csv y se almacenan los datos en el vector vidimencional data.
     * 
     * @param FGO_Servant_Data.csv is .csv document
-    * @param
     * @return vector of vectors data
     */
 

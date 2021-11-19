@@ -106,6 +106,7 @@ string List::printParty(){
 
     return party.str();
 }
+
 /*
 * Función que de sequential search que compara un string con el nombre completo de cada servant para devolver la 
 * posición del vector que contiene toda su información.

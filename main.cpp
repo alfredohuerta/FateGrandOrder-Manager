@@ -10,6 +10,7 @@
 
 //#include "sorts.h"
 #include "estructuraslineales.h"
+#include "trees.h"
 
 using namespace std;
 

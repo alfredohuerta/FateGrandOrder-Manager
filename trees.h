@@ -38,6 +38,15 @@ TreeNode::TreeNode(vector<string> servant) : datos(servant), left(0), right(0), 
 TreeNode::TreeNode(vector<string> servant, TreeNode *le, TreeNode *ri, int lvl, int bal) 
     : datos(servant), left(le), right(ri), level(lvl), balance(bal) {}
 
+/*
+* Función recursica que borra los nodos del árbol.
+* 
+* @complejidad: O(n) -> aplicación de ciclo recursivo.
+* 
+* @param: 
+* 
+* @return:
+*/
 void TreeNode::removeChilds(){
     if (left != 0) {
         left->removeChilds();
@@ -54,6 +63,9 @@ void TreeNode::removeChilds(){
 /*
 * Función que convierte los datos de un vector de strings en integers
 * 
+* 
+* @complejidad: O(1) -> no de aplica ningún ciclo.
+*
 * @param: vector<string> servant -> vector de strings que contiene los datos individuales de un servant.
 * @param: int index -> posición del valor que se va a convertir a integers.
 * 
@@ -74,6 +86,8 @@ int TreeNode::toInt(vector<string> servant, int index){
 * Función que añade datos a un nodo del árbol. Recibe el estring con todos los datos del servant, basado en el índice 
 * dado por el usuario convierte los datos en integers y el dato convertido lo compara para decidir qué dato irá donde.
 * 
+* @complejidad: O(n) -> se aplican ciclos recursivos.
+*
 * @param: vector<string> individual -> vector con los datos individuales del sercant.
 * @param: int index -> número de columna que marca el dato que dictará el valor a tomar en cuenta para el ordenamiento.
 * 
@@ -103,6 +117,8 @@ void TreeNode::add(vector<string> individual, int index){
 /*
 * Función que recibe los datos completos de un servant y el número de columna con los datos que determinan su posición 
 * en el árbol y que controla el ciclo recursivo de búsqueda.
+* 
+* @complejidad: O(n) -> aplica ciclo recursivo
 * 
 * @param: vector<string> servant -> datos completos del servant.
 * @param: int index -> columna con la estadística a buscar.
@@ -167,6 +183,15 @@ Tree::Tree(){
     servantStat= 0;
 }
 
+/*
+* Constructor del objeto Tree que en su interior abre el archivo csv para mantenerlo disponible para todos los métodos
+*
+* @complejidad: O(n^3) -> implementa dos ciclos while que recorren todo el archivo .csv y un ciclo for del tamaño del 
+* arreglo donde se guardan los datos completos del csv y un ciclo for con un rango fijo. O(n)+O(n)+O(n)+O(1)= O(n^3).
+*
+* @param: string servantCLass -> clase de los servants que va a contener el árbol.
+* @param: int stat -> número de columna del vector donde se encuentra la estadística que dominará el árbol.
+*/
 Tree::Tree(string servantClass,int stat){
     ifstream  servants;
     servants.open("FGO_Servant_Data.csv");
@@ -222,6 +247,8 @@ void Tree::removeAll(){
 /*
 * Funcion que recoge la clase de un servant y lo inserta en el árbol, pasandolo a la función add de un nodo.
 *
+* @complejidad: O(n) -> implementación de ciclos recursivos
+* 
 * @param: string servantClass -> clase del servant que será agregado al árbol.
 * 
 * @return:
@@ -239,6 +266,9 @@ void Tree::add(vector<string> individual){
 /*
 * Función que toma el nombre de un servant y los coteja con la base de datos completa para encontrar el arreglo completo
 * donde se encuentran todos sus datos y lo envía a la dunción find de TreeNode
+* 
+* @complejidad: O(n) -> implementación de dos ciclos for, uno con parámetros fijos (O(1)) y otro del tamaño del array 
+* (O(n)). O(1) + O(n) = O(n)
 * 
 * @param: string name -> el nombre del servant que se buscará en toda la base de datos.
 * 

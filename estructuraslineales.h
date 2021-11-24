@@ -18,7 +18,7 @@
 using namespace std;
 
 class DLink{
-    private:
+    public:
         DLink(vector<string> );
         DLink(vector<string>, DLink*, DLink*);
         DLink(const DLink &);
@@ -44,6 +44,7 @@ class List{
     void clear(); //Borra todos los datos de la lista.
     bool empty() const; //devuelve un valor boooleano dependiendo de si la lista está vacía o no
     int espaciosUsados() const;
+    vector<vector<string>> dataBase();
 
     //Funciones de manejo de datos.
     int extractServant(vector<vector<string>> &, string &);
@@ -56,8 +57,8 @@ class List{
     private:
         DLink *head;
         DLink *tail;
-        int size, capacidad; //size -> tamaño máximo de datos que puede almacenar la lista.
-                            //capacidad -> número de espacios siendo usados.
+        int size; //size -> tamaño máximo de datos que puede almacenar la lista.
+        int capacidad; //capacidad -> número de espacios siendo usados.
 };
 
 List::List() : head(0), tail(0), size(5), capacidad(0) {}
@@ -88,6 +89,14 @@ int List::espaciosUsados() const{
     return capacidad;
 }
 
+/*
+* Función que convierte los datos del vector de datos del servant en un string stream y lo imprime.
+* 
+* @complejidad: O(n) -> uso de un ciclo for
+* @param: 
+*
+* @return: party.str() -> string con los datos del servant
+*/
 string List::printParty(){
     stringstream party;
     int pos = 1;
@@ -110,6 +119,8 @@ string List::printParty(){
 /*
 * Función que de sequential search que compara un string con el nombre completo de cada servant para devolver la 
 * posición del vector que contiene toda su información.
+*
+* @complejidad: O(n) -> uso de un ciclo for
 * 
 * @param: vector<vector<string>> &servants -> vector donde se almacenan todos los datos de los servants.
 * @param: string name -> nombre completo del servant que se desea encontrar.
@@ -129,6 +140,8 @@ int List::extractServant(vector<vector<string>> &servantdb, string &name) {
 /*
 * Función que busca nodo por nodo el nombre del servant que se necesitay regresa sus datos completos. De no encontrarse 
 * el servant, se envía un mensaje de error.
+* 
+* @complejidad: O(n^2) -> uso de dos ciclos for anidados.
 * 
 * @param: string name -> nombre completo del servant que se desea buscar en la party.
 * @return: todo.srt() -> string stream que contiene todos los datos del nodo a.k.a. servant.
@@ -162,6 +175,8 @@ string List::search(string &name){
 /*
 * Función que valida si la lista no está llena, extrae sus datos de la base de datos general y la almacena en un vector
 * que después será almacenado en la lista.
+* 
+* @complejidad: O(n) -> uso de un ciclo for.
 * 
 * @param: vector<vector<string>> &servants -> vector donde se almacenan todos los datos de los servants.
 * @param: string name -> nombre completo del servant que se desea agregar a la party.
@@ -197,6 +212,9 @@ void List::addfirst(vector<vector<string>> &servantdb, string &name){
 * Función que valida si la lista no está llena y en caso de estar vacía, llama a la función addfirst(); extrae sus datos
 *  de la base de datos general y la almacena en un vector que después será almacenado en la lista.
 * 
+* 
+* @complejidad: O(n) -> uso de un ciclo for.
+* 
 * @param: vector<vector<string>> &servants -> vector donde se almacenan todos los datos de los servants.
 * @param: string name -> nombre completo del servant que se desea agregar a la party.
 */
@@ -230,6 +248,9 @@ void List::add(vector<vector<string>> &servantdb, string &name){
 * Función que elimina un elemento dado de la lista tras validar que no está vacía y diferencía entr el primer elemento
 * de la misma y cualquier otro.
 * 
+* 
+* @complejidad: O(n) -> uso de un ciclo for.
+*
 * @param: string name -> nombre completo del servant que se desea eliminar de la party.
 * @return: 
 */

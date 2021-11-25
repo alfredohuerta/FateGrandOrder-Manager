@@ -14,11 +14,10 @@
 #include <string>
 #include <sstream>
 
-
 using namespace std;
 
 class DLink{
-    public:
+    private:
         DLink(vector<string> );
         DLink(vector<string>, DLink*, DLink*);
         DLink(const DLink &);
@@ -36,23 +35,23 @@ DLink :: DLink(const DLink &source) : servantData(source.servantData), previous(
 
 class List{
     public:
-    List();
-    List(const List &);
-    ~List();
+        List();
+        List(const List &);
+        ~List();
 
-    //Funciones de consulta de propiedades.
-    void clear(); //Borra todos los datos de la lista.
-    bool empty() const; //devuelve un valor boooleano dependiendo de si la lista está vacía o no
-    int espaciosUsados() const;
-    vector<vector<string>> dataBase();
+        //Funciones de consulta de propiedades.
+        void clear(); //Borra todos los datos de la lista.
+        bool empty() const; //devuelve un valor boooleano dependiendo de si la lista está vacía o no
+        int espaciosUsados() const;
+        vector<vector<string>> dataBase();
 
-    //Funciones de manejo de datos.
-    int extractServant(vector<vector<string>> &, string &);
-    string search(string &);
-    void addfirst(vector<vector<string>> &, string &);
-    void add(vector<vector<string>> &, string &);
-    void remove(string &);
-    string printParty();
+        //Funciones de manejo de datos.
+        int extractServant(vector<vector<string>>, string);
+        string search(string);
+        void addfirst(vector<vector<string>>, string);
+        void add(vector<vector<string>>, string);
+        void remove(string);
+        string printParty();
 
     private:
         DLink *head;
@@ -105,14 +104,13 @@ string List::printParty(){
     p= head;
     
     while(p != 0){
-        for(int i= 0; i < 38; i++){
+        for(int i= 0; i < 36; i++){
             party << p->servantData[i];
             party << ", ";
         }
         party << "\n";
         p= p->next;
     }
-
     return party.str();
 }
 
@@ -127,7 +125,7 @@ string List::printParty(){
 * 
 + @return: posición del vector interno que contiene la información del servant. En caso de no encontrarse, regresa -1.
 */
-int List::extractServant(vector<vector<string>> &servantdb, string &name) {
+int List::extractServant(vector<vector<string>> servantdb, string name) {
     for(int i= 0; i < servantdb.size(); i++){
         if(servantdb[i][1] == name){
             return i;
@@ -146,17 +144,17 @@ int List::extractServant(vector<vector<string>> &servantdb, string &name) {
 * @param: string name -> nombre completo del servant que se desea buscar en la party.
 * @return: todo.srt() -> string stream que contiene todos los datos del nodo a.k.a. servant.
 */
-string List::search(string &name){
+string List::search(string name){
     stringstream todo;
     DLink *p;
 
     p= head;
 
     if(empty()){
-        throw "Error: party vacía \n"; 
+        return "Party vacía";
     }
 
-    for(int i= 0; i <= 5; i++){
+    for(int i= 0; i <= espaciosUsados(); i++){
         if(p->servantData[1] == name){
             todo << "[";
             for(int i= 0; i < 36; i++){
@@ -181,12 +179,13 @@ string List::search(string &name){
 * @param: vector<vector<string>> &servants -> vector donde se almacenan todos los datos de los servants.
 * @param: string name -> nombre completo del servant que se desea agregar a la party.
 */
-void List::addfirst(vector<vector<string>> &servantdb, string &name){
+void List::addfirst(vector<vector<string>> servantdb, string name){
     int pos= extractServant(servantdb, name); //variable en la que se almcena la posición del servant.
     vector<string> individual; //arreglo donde se almacenan los datos del servant.
 
     if(capacidad == size){
-        throw "Party llena. \n";
+        cout << "Party llena." << endl;
+        return;
     }
 
     for(int i= 0; i < 36; i++){
@@ -218,13 +217,15 @@ void List::addfirst(vector<vector<string>> &servantdb, string &name){
 * @param: vector<vector<string>> &servants -> vector donde se almacenan todos los datos de los servants.
 * @param: string name -> nombre completo del servant que se desea agregar a la party.
 */
-void List::add(vector<vector<string>> &servantdb, string &name){
+void List::add(vector<vector<string>> servantdb, string name){
     if(empty()){
         addfirst(servantdb, name);
+        return;
     }
 
     if(capacidad == size){
-        throw "Party llena. \n";
+        cout << "Party llena." << endl;
+        return;
     }
 
     int pos= extractServant(servantdb, name);
@@ -254,13 +255,14 @@ void List::add(vector<vector<string>> &servantdb, string &name){
 * @param: string name -> nombre completo del servant que se desea eliminar de la party.
 * @return: 
 */
-void List::remove(string &name){
+void List::remove(string name){
     DLink *p;
     p= head;
     if(empty()){
-        throw "Party vacía.\n";
+        cout << "Party vacía." << endl;
+        return;
     }
-    for(int i= 0; i <= 5; i++){
+    for(int i= 0; i <= espaciosUsados(); i++){
         if(p->servantData[1] == name && i == 0){
             p->next->previous = p->previous;
             break;
@@ -270,6 +272,7 @@ void List::remove(string &name){
         }
         p= p->next;
     }
+    cout << "Se va a borrar: " << p->servantData[1] << endl;
     delete p;
     --capacidad;
 }

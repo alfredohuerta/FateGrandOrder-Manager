@@ -134,9 +134,7 @@ vector<struct servant> Sorts::createServants(vector<vector<string>> dataBase,ser
         allServants.push_back(indi);
     }
 
-    cout << "Origin" << allServants[0].name << endl;
     allServants.erase(allServants.begin());
-    cout << "Origin N" << allServants[0].name << endl;
     return allServants;
 }
 
@@ -155,16 +153,6 @@ string Sorts::printArray(){
         array << todos[i].id;
         array << ", Nombre: ";
         array << todos[i].name;
-        /*array << ", Nivel maximo: ";
-        array << todos[i].maxLevel;
-        array << ", Ataque a nivel 1: ";
-        array << todos[i].attackLevel1;
-        array << ", Salud a nivel 1: ";
-        array << todos[i].healthLevel1;
-        array << ", Ataque a nivel 100: ";
-        array << todos[i].attackLevel100;
-        array << ", Salud a nivel 100: ";
-        array << todos[i].healthLevel100;*/
         array << ")\n";
     }
 
@@ -231,25 +219,118 @@ void Sorts::mergeArray(vector<struct servant> &A, vector<struct servant> &B, int
 	j = mid + 1;
 	k = low;
 
-	while (i <= mid && j <= high) {
-		if (A[i].healthLevel1 < A[j].healthLevel1) {
-			B[k] = A[i];
-			i++;
-		} else {
-			B[k] = A[j];
-			j++;
-		}
-		k++;
-	}
-	if (i > mid) {
-		for (; j <= high; j++) {
-			B[k++] = A[j];
-		}
-	} else {
-		for (; i <= mid; i++) {
-			B[k++] = A[i];
-		}
-	}
+    switch (op)
+    {
+    case 1:
+        while (i <= mid && j <= high) {
+            if (A[i].maxLevel < A[j].maxLevel) {
+                B[k] = A[i];
+                i++;
+            } else {
+                B[k] = A[j];
+                j++;
+            }
+            k++;
+        }
+        if (i > mid) {
+            for (; j <= high; j++) {
+                B[k++] = A[j];
+            }
+        } else {
+            for (; i <= mid; i++) {
+                B[k++] = A[i];
+            }
+        }
+        break;
+    case 2:
+        while (i <= mid && j <= high) {
+            if (A[i].healthLevel1 < A[j].healthLevel1) {
+                B[k] = A[i];
+                i++;
+            } else {
+                B[k] = A[j];
+                j++;
+            }
+            k++;
+        }
+        if (i > mid) {
+            for (; j <= high; j++) {
+                B[k++] = A[j];
+            }
+        } else {
+            for (; i <= mid; i++) {
+                B[k++] = A[i];
+            }
+        }
+        break;
+
+    case 3:
+        while (i <= mid && j <= high) {
+            if (A[i].attackLevel1 < A[j].attackLevel1) {
+                B[k] = A[i];
+                i++;
+            } else {
+                B[k] = A[j];
+                j++;
+            }
+            k++;
+        }
+        if (i > mid) {
+            for (; j <= high; j++) {
+                B[k++] = A[j];
+            }
+        } else {
+            for (; i <= mid; i++) {
+                B[k++] = A[i];
+            }
+        }
+        break;
+    case 4:
+        while (i <= mid && j <= high) {
+            if (A[i].healthLevel100 < A[j].healthLevel100) {
+                B[k] = A[i];
+                i++;
+            } else {
+                B[k] = A[j];
+                j++;
+            }
+            k++;
+        }
+        if (i > mid) {
+            for (; j <= high; j++) {
+                B[k++] = A[j];
+            }
+        } else {
+            for (; i <= mid; i++) {
+                B[k++] = A[i];
+            }
+        }
+        break;
+    case 5:
+        while (i <= mid && j <= high) {
+            if (A[i].attackLevel100 < A[j].attackLevel100) {
+                B[k] = A[i];
+                i++;
+            } else {
+                B[k] = A[j];
+                j++;
+            }
+            k++;
+        }
+        if (i > mid) {
+            for (; j <= high; j++) {
+                B[k++] = A[j];
+            }
+        } else {
+            for (; i <= mid; i++) {
+                B[k++] = A[i];
+            }
+        }
+        break;
+    default:
+        cout << "Invalido :(" << endl;
+        break;
+    }
 }
 
 /**

@@ -19,24 +19,24 @@ using namespace std;
 class TreeNode{
     private:
         vector<string> datos;
-        int level, balance;
 	    TreeNode *left, *right;
 	    TreeNode *predecesor();
     public:
         TreeNode(vector<string>);
-        TreeNode(vector<string>, TreeNode*, TreeNode*, int, int);
+        TreeNode(vector<string>, TreeNode*, TreeNode*);
 
         int toInt(vector<string> , int);
         void add(vector<string>, int);
         bool find(vector<string>, int);
         void removeChilds();
+        void inorder(stringstream &) const;
 
         friend class Tree;
 };
 
-TreeNode::TreeNode(vector<string> servant) : datos(servant), left(0), right(0), level(0), balance(0) {}
-TreeNode::TreeNode(vector<string> servant, TreeNode *le, TreeNode *ri, int lvl, int bal) 
-    : datos(servant), left(le), right(ri), level(lvl), balance(bal) {}
+TreeNode::TreeNode(vector<string> servant) : datos(servant), left(0), right(0) {}
+TreeNode::TreeNode(vector<string> servant, TreeNode *le, TreeNode *ri) 
+    : datos(servant), left(le), right(ri) {}
 
 /*
 * Función recursica que borra los nodos del árbol.
@@ -75,7 +75,7 @@ int TreeNode::toInt(vector<string> servant, int index){
     string nums= servant[index];
     stringstream dato;
     dato << nums;
-    int x=0;
+    long int x=0;
     
     dato >> x;
     
@@ -126,11 +126,10 @@ void TreeNode::add(vector<string> individual, int index){
 * @return: bool
 */
 bool TreeNode::find(vector<string> servant, int index){
-    int search= toInt(servant, index);
-    int current= toInt(datos, index);
-
-
-    if(servant == datos){
+    long int search= toInt(servant, index);
+    long int current= toInt(datos, index);
+    
+    if(servant[1] == datos[1]){
         return true;
     }else if(search < current){
         return (left != 0 && left->find(servant, index));
@@ -138,6 +137,25 @@ bool TreeNode::find(vector<string> servant, int index){
         return (right != 0 && right->find(servant, index));
     }
     return false;
+}
+
+void TreeNode::inorder(stringstream &aux) const{
+    if (left != 0) {
+		left->inorder(aux);
+	}
+	if (aux.tellp() != 1) {
+		aux << "\n";
+        aux << "\n";
+	}
+	
+    for(int i= 0; i < datos.size(); i++){
+        aux << datos[i];
+        aux << " ";
+    }
+
+	if (right != 0) {
+		right->inorder(aux);
+	}
 }
 
 /* ------------------------------------------------------ESPACIO------------------------------------------------------ */
@@ -155,7 +173,8 @@ class Tree{
         bool empty() const;
         void removeAll();
         void add(vector<string>);
-        vector<string> find(string);
+        vector<string> find(string, int);
+        string printServant() const;
 };
 
 Tree::Tree(){
@@ -217,7 +236,7 @@ Tree::Tree(string servantClass,int stat){
 
     for(int i= 0; i < data.size(); i++){
         if(servantClass == data[i][3]){
-            for(int j= 0; j < 38; j++){
+            for(int j= 0; j < 36; j++){
                 pj.push_back(data[i][j]);
             }
             add(pj);
@@ -274,29 +293,38 @@ void Tree::add(vector<string> individual){
 * 
 * @return: vector<string> temp -> regresa los valores del servant en forma de arreglo de strings.
 */
-vector<string> Tree::find(string name){
+vector<string> Tree::find(string name, int stat){
+    vector<string> empty = {"Data not found"};
     vector<string> temp;
-    bool flag= false;
+    bool flag= true;
 
     for(int i= 0; i < dataBase.size(); i++){
         if(dataBase[i][1] == name){
-            for(int j= 0; j < 38; j++){
+            for(int j= 0; j < 36; j++){
                 temp.push_back(dataBase[i][j]);
             }
         }
     }
 
     if (root != 0) {
-        flag= root->find(temp, servantStat);
-        cout << flag << "\n" << endl;
+        flag= root->find(temp, stat);
         if(flag){
             return temp;
         }
 	}
 
-    temp.clear();
-    temp.push_back(":( ");
-    temp.push_back("Data not found");
-	return temp;
+    return empty;
 }
+
+string Tree::printServant() const{
+    stringstream aux;
+
+	aux << "[";
+	if (!empty()) {
+		root->inorder(aux);
+	}
+	aux << "]";
+	return aux.str();
+}
+
 #endif

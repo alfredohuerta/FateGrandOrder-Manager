@@ -3,6 +3,7 @@
 * Matrícula: A01708119
 */
 
+#include <stdlib.h>
 #include <iostream>
 #include <vector>
 #include <sstream>
@@ -453,4 +454,5 @@ int main(){
     default:
         break;
     }
+    return 0;
 }

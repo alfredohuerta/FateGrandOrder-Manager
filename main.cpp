@@ -51,8 +51,7 @@ int main(){
             "Generar árbol de clases -> 3\n"
             "Generar casos de prueba -> 4\n"
             "Ingrese su elección: ";
-    //cin >> proceso;
-    proceso= 4;
+    cin >> proceso;
 
     
     switch (proceso)

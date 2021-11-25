@@ -52,7 +52,8 @@ int main(){
             "Generar árbol de clases -> 3\n"
             "Generar casos de prueba -> 4\n"
             "Ingrese su elección: ";
-    cin >> proceso;
+    proceso = 4;
+    //cin >> proceso;
 
     
     switch (proceso)
@@ -409,15 +410,32 @@ int main(){
         }
     case 4: //Casos de prueba
         {
+            //hacer casos de prueba con sólo uno pocos datos para comparar.
             vector<string> datosIndividuales;
             vector<string> names= {"Mash_Kyrielight", "Altria_Pendragon", "Altria_Pendragon_(Alter)", "Altria_Pendragon_(Lily)", "Nero_Claudius"};
             string servantN;
 
-            cout << "Ordenar por medio de un merge sort" << endl;
+            /*cout << "Ordenar por medio de un merge sort" << endl;
             Sorts ordenar;
-            cout << "Arreglo original:\n" << ordenar.printArray() << "\n" << endl;
-            ordenar.merge(1);
-            cout << "Arreglo ordenado por nivel maximo:\n" << ordenar.printArray() << "\n" << endl;
+            string ans;
+            ordenar.merge(2);
+            ans= "(ID: 174, Nombre: Paul_Bunyan)\n"
+                 "(ID: 39, Nombre: Sasaki_Kojirou)\n"
+                 "(ID: 259, Nombre: Charlotte_Corday)\n"
+                 "(ID: 260, Nombre: Salome)\n"
+                 "(ID: 45, Nombre: Mata_Hari)\n"
+                 "(ID: 53, Nombre: Asterios)\n"
+                 "(ID: 42, Nombre: Jing_Ke)\n"
+                 "(ID: 257, Nombre: Bartholomew_Roberts)\n"
+                 "(ID: 28, Nombre: Alexander)\n"
+                 "(ID: 54, Nombre: Caligula)\n";
+            cout << ans << endl;
+
+            cout << "\nArreglo ordenado por salud a nivel 1:\n" << ordenar.printArray() << "\n" << endl;
+
+            if(ans == ordenar.printArray()){
+                cout << "Success" << endl;
+            }*/
 
             cout << "\nCrear party" << endl;
             for(int i= 0; i < names.size(); i++){

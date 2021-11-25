@@ -148,7 +148,7 @@ vector<struct servant> Sorts::createServants(vector<vector<string>> dataBase,ser
 string Sorts::printArray(){
     stringstream array;
     
-    for(int i= 0; i < todos.size(); i++){
+    for(int i= 0; i < 10; i++){
         array << "(ID: ";
         array << todos[i].id;
         array << ", Nombre: ";

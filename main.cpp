@@ -500,7 +500,7 @@ int main(){
             cout << "\nBusqueda de servant:" << endl;
             servantN= "Amakusa_Shirou";
             datosIndividuales= arbol.find(servantN, 7);
-            vector<string> vectorAns= {"93", "Amakusa_Shirou", "Kotomine Shirou",	"Ruler", "5-star", "16", "90", "1695", "2069", "10972", "14107", "10972", "14107", "12011", "15455", "0.0086", "0.03", "100", "0.1", "0.21", "1", "2", "3", "4", "1", "Man", "Male-Servant-Humanoid-Weak to Enuma Elish", "Konoe Ototsugu", "Uchiyama Kouki", "169 cm", "59 kg", "Lawful Good", "Fate/Apocrypha", "Male", "Historical Fact", "Japan"};
+            vector<string> vectorAns= {"93", "Amakusa_Shirou", "Kotomine Shirou", "Ruler", "5-star", "16", "90", "1695", "2069", "10972", "14107", "10972", "14107", "12011", "15455", "0.0086", "0.03", "100", "0.1", "0.21", "1", "2", "3", "4", "1", "Man", "Male-Servant-Humanoid-Weak to Enuma Elish", "Konoe Ototsugu", "Uchiyama Kouki", "169 cm", "59 kg", "Lawful Good", "Fate/Apocrypha", "Male", "Historical Fact", "Japan"};
             
             for(int i= 0; i < datosIndividuales.size() && i < vectorAns.size(); i++){
                 if(datosIndividuales[i] == vectorAns[i]){

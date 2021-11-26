@@ -205,6 +205,8 @@ void Sorts::mergeSplit(vector<struct servant> &A, vector<struct servant> &B, int
 /**
  * @brief Función que compara los datos del arreglo A y los almacena en el B
  * 
+ * @complejidad: O(n) debido a la presencia de ciclos while.
+ * 
  * @param A vector de estructuras con todos los datos de la base de datos
  * @param B vector temporal vacío del tamaño de vector A
  * @param low posición más baja del arreglo.
@@ -335,6 +337,8 @@ void Sorts::mergeArray(vector<struct servant> &A, vector<struct servant> &B, int
 
 /**
  * @brief Función que copia los elementos de un arreglo en otro.
+ * 
+ * @complejidad: O(n) -> por la presencia de un ciclo for que recorre desde el elemento más bajo hasta el más alto del arreglo.
  * 
  * @param A vector con todos los datos de la base de datos
  * @param B vector vacío

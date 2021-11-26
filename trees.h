@@ -140,6 +140,13 @@ bool TreeNode::find(vector<string> servant, int index){
     return false;
 }
 
+/**
+ * @brief FUnción que recorre en orden todos los elementos del arbos y los almacena en un stringstream
+ * 
+ * @complejidad: O(n) -> aplicación de ciclos recursivos.
+ * 
+ * @param aux string stream que almacena los datos de la hoja
+ */
 void TreeNode::inorder(stringstream &aux) const{
     if (left != 0) {
 		left->inorder(aux);
@@ -159,6 +166,13 @@ void TreeNode::inorder(stringstream &aux) const{
 	}
 }
 
+/**
+ * @brief Función simplificada que recorre en orden todos los elementos del arbos y los almacena en un stringstream
+ * 
+ * @complejidad: O(n) -> aplicación de ciclos recursivos.
+ * 
+ * @param aux string stream que almacena los datos de la hoja
+ */
 void TreeNode::inorderRedux(stringstream &aux) const{
     if (left != 0) {
 		left->inorderRedux(aux);
@@ -337,6 +351,13 @@ vector<string> Tree::find(string name, int stat){
     return empty;
 }
 
+/**
+ * @brief función que guarda los datos de un servant en un string stream
+ * 
+ * @complejidad: O(n) -> presencia de ciclo recursivo.
+ * 
+ * @return string datos del servant
+ */
 string Tree::printServant() const{
     stringstream aux;
 
@@ -348,6 +369,13 @@ string Tree::printServant() const{
 	return aux.str();
 }
 
+/**
+ * @brief función abrviada que guarda los primeros datos de un servant en un string stream
+ * 
+ * @complejidad: O(n) -> presencia de ciclo recursivo.
+ * 
+ * @return string datos del servant
+ */
 string Tree::printServantRedux() const{
     stringstream aux;
 

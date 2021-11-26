@@ -52,6 +52,8 @@ class List{
         void add(vector<vector<string>>, string);
         void remove(string);
         string printParty();
+        string searchRedux(string);
+        string printPartyRedux();
 
     private:
         DLink *head;
@@ -272,9 +274,52 @@ void List::remove(string name){
         }
         p= p->next;
     }
-    cout << "Se va a borrar: " << p->servantData[1] << endl;
     delete p;
     --capacidad;
+}
+
+string List::printPartyRedux(){
+    stringstream party;
+    int pos = 1;
+    DLink *p;
+
+    p= head;
+    
+    while(p != 0){
+        for(int i= 0; i < 4; i++){
+            party << p->servantData[i];
+            party << " ";
+        }
+        party << "\n";
+        p= p->next;
+    }
+    return party.str();
+}
+
+string List::searchRedux(string name){
+    stringstream todo;
+    DLink *p;
+
+    p= head;
+
+    if(empty()){
+        return "Party vacía";
+    }
+
+    for(int i= 0; i <= espaciosUsados(); i++){
+        if(p->servantData[1] == name){
+            todo << "[";
+            for(int i= 0; i < 4; i++){
+                todo << p->servantData[i];
+                todo << " ";
+            }
+            todo << "]";
+            return todo.str();
+        }
+        p= p->next;
+    }
+
+    return "Error: El servant no se encuentra en la party";
 }
 
 #endif

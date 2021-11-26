@@ -30,6 +30,7 @@ class TreeNode{
         bool find(vector<string>, int);
         void removeChilds();
         void inorder(stringstream &) const;
+        void inorderRedux(stringstream &) const;
 
         friend class Tree;
 };
@@ -158,6 +159,25 @@ void TreeNode::inorder(stringstream &aux) const{
 	}
 }
 
+void TreeNode::inorderRedux(stringstream &aux) const{
+    if (left != 0) {
+		left->inorderRedux(aux);
+	}
+	if (aux.tellp() != 1) {
+		aux << "\n";
+        aux << "\n";
+	}
+	
+    for(int i= 0; i < 4; i++){
+        aux << datos[i];
+        aux << " ";
+    }
+
+	if (right != 0) {
+		right->inorderRedux(aux);
+	}
+}
+
 /* ------------------------------------------------------ESPACIO------------------------------------------------------ */
 
 class Tree{
@@ -175,6 +195,7 @@ class Tree{
         void add(vector<string>);
         vector<string> find(string, int);
         string printServant() const;
+        string printServantRedux() const;
 };
 
 Tree::Tree(){
@@ -324,6 +345,15 @@ string Tree::printServant() const{
 		root->inorder(aux);
 	}
 	aux << "]";
+	return aux.str();
+}
+
+string Tree::printServantRedux() const{
+    stringstream aux;
+
+	if (!empty()) {
+		root->inorderRedux(aux);
+	}
 	return aux.str();
 }
 

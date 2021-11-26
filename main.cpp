@@ -36,8 +36,6 @@ int main(){
         pj.clear();
     }
 
-    cout << data[0][1] << endl;
-
     //Menu de usuario.
     int proceso;
     List party;
@@ -52,8 +50,8 @@ int main(){
             "Generar árbol de clases -> 3\n"
             "Generar casos de prueba -> 4\n"
             "Ingrese su elección: ";
-    proceso = 4;
-    //cin >> proceso;
+    cin >> proceso;
+    cout << "\n";
 
     
     switch (proceso)
@@ -413,11 +411,10 @@ int main(){
             //hacer casos de prueba con sólo uno pocos datos para comparar.
             vector<string> datosIndividuales;
             vector<string> names= {"Mash_Kyrielight", "Altria_Pendragon", "Altria_Pendragon_(Alter)", "Altria_Pendragon_(Lily)", "Nero_Claudius"};
-            string servantN;
+            string servantN, test, ans;
 
-            /*cout << "Ordenar por medio de un merge sort" << endl;
+            cout << "Ordenar por medio de un merge sort" << endl;
             Sorts ordenar;
-            string ans;
             ordenar.merge(2);
             ans= "(ID: 174, Nombre: Paul_Bunyan)\n"
                  "(ID: 39, Nombre: Sasaki_Kojirou)\n"
@@ -429,44 +426,94 @@ int main(){
                  "(ID: 257, Nombre: Bartholomew_Roberts)\n"
                  "(ID: 28, Nombre: Alexander)\n"
                  "(ID: 54, Nombre: Caligula)\n";
-            cout << ans << endl;
 
-            cout << "\nArreglo ordenado por salud a nivel 1:\n" << ordenar.printArray() << "\n" << endl;
+            cout << "\nArreglo ordenado por salud a nivel 1:\n" << endl;
 
             if(ans == ordenar.printArray()){
-                cout << "Success" << endl;
-            }*/
+                cout << "SUCCESS" << endl;
+            }
 
             cout << "\nCrear party" << endl;
             for(int i= 0; i < names.size(); i++){
-                cout << "Se agrega servant: " << names[i] << endl;
                 party.add(data, names[i]);
             }
-            cout << "\nParty completa: \n" << endl;
-            cout << party.printParty() << endl;
+            ans= "1 Mash_Kyrielight Galahad Shielder\n"
+                 "2 Altria_Pendragon King Arthur-King of Knights Saber\n"
+                 "3 Altria_Pendragon_(Alter) King Arthur-King of Knights Saber\n"
+                 "4 Altria_Pendragon_(Lily) King Arthur-King of Knights Saber\n"
+                 "5 Nero_Claudius Empress of Rose Saber ";
+            test= party.printPartyRedux(); 
+            if(ans.compare(test)){
+                cout << "Crear party -> SUCCESS\n" << endl;
+                cout << "Función crear party\n" << party.printPartyRedux() << endl;
+            }
+
             cout << "Borrar datos servant: " << names[1] << endl;
             party.remove(names[1]);
-            cout << "Nueva party:\n" << party.printParty() << endl;
+            test= party.printPartyRedux();
+            bool flag= !ans.compare(test); 
+            if(flag == false){
+                cout << "Borrar servant -> SUCCESS\n" << endl;
+                cout << "Party post-borrado\n" << party.printPartyRedux() << endl;
+            }
+
             cout << "\nBuscar datos servant: " << names[4] << endl;
-            cout << party.search(names[4]) << endl;
+            ans= "[5 Nero_Claudius Empress of Rose Saber ]";
+            test= party.searchRedux(names[4]); 
+            if(test == ans){
+                cout << "Servant Search -> SUCCESS" << endl;
+                cout << "Servant data: " << test << endl;
+            }
+
             servantN= "Kiyohime";
             cout << "\nAgregar nuevo servant: " << servantN << endl;
             party.add(data, servantN);
-            cout << "\nNueva party: " << endl;
-            cout << party.printParty() << endl;
+            ans= "1 Mash_Kyrielight Galahad Shielder\n"
+                 "3 Altria_Pendragon_(Alter) King Arthur-King of Knights Saber\n"
+                 "4 Altria_Pendragon_(Lily) King Arthur-King of Knights Saber\n"
+                 "5 Nero_Claudius Empress of Rose Saber "
+                 "56 Kiyohime Princess Kiyo Kiyo-yo Best Girl Berserker";
+            test= party.printPartyRedux();
+            if(ans.compare(test)){
+                cout << "Agregar nuevo servant -> SUCCESS" << endl;
+                cout << "Party post-agregación\n" << party.printPartyRedux() << "\n" << endl;
+            }
 
             cout << "\nCreación de arbol de servants clase Ruler ordenados por Ataque a nivel 1" << endl;
             
             Tree arbol("Ruler", 7);
 
-            cout << "Imprimir datos del árbol\n" << endl;
-            cout << arbol.printServant() << endl;
-            servantN= "Amakusa_Shirou";
-            cout << "\nBuscar servant: " << servantN << endl;
-            datosIndividuales= arbol.find(servantN, 7);
-            for(int i= 0; i < datosIndividuales.size(); i++){
-                cout << datosIndividuales[i] << "  ";
+            ans= "59 Jeanne_d'Arc Joan of Arc-La Pucelle d'Orleans Ruler"
+                 "265 Bunny_Altria_Pendragon Lion King Bunny King Ruler"
+                 "229 Shi_Huang_Di Qin Shi Huang-Shikoutei Ruler"
+                 "135 Summer_Martha Martha of Bethany-Saint of the Waterside Ruler"
+                 "233 Quetzalcoatl_(Samba/Santa) Feathered Serpent Ruler"
+                 "242 Astraea Goddess of Justice-Luviagelita Edelfelt Ruler"
+                 "93 Amakusa_Shirou Kotomine Shirou Ruler";
+            test= arbol.printServantRedux();
+
+            if(ans.compare(test)){
+                cout << "Imprimir Arbol de rulers -> SUCCESS" << endl;
+                cout << "Arbol de servants clase:\n" << test << endl;
             }
+
+            cout << "\nBusqueda de servant:" << endl;
+            servantN= "Amakusa_Shirou";
+            datosIndividuales= arbol.find(servantN, 7);
+            vector<string> vectorAns= {"93", "Amakusa_Shirou", "Kotomine Shirou",	"Ruler", "5-star", "16", "90", "1695", "2069", "10972", "14107", "10972", "14107", "12011", "15455", "0.0086", "0.03", "100", "0.1", "0.21", "1", "2", "3", "4", "1", "Man", "Male-Servant-Humanoid-Weak to Enuma Elish", "Konoe Ototsugu", "Uchiyama Kouki", "169 cm", "59 kg", "Lawful Good", "Fate/Apocrypha", "Male", "Historical Fact", "Japan"};
+            
+            for(int i= 0; i < datosIndividuales.size() && i < vectorAns.size(); i++){
+                if(datosIndividuales[i] == vectorAns[i]){
+                    ans = "Búsqueda de servant " + servantN + " -> SUCCESS";
+                }else{
+                    ans= "Busqueda fallida";
+                }
+            }
+
+            cout << ans << endl;
+
+            cout << "Fin del programa" << endl;
+
             break;
         }
     default:

@@ -5,10 +5,10 @@ Esto llama a la necesidad de una herramienta que permita a los jugadores encontr
 ## Funcionalidad:
 El código cuenta con tres funciones principales: sort, list y tree.
 ### Sort:
-Esta función permite al usuario ordenar de menor a mayor los servants de acuerdo a una estadística previamente ingresada en el programa, así como consultar los datos de la posición de los servants en la misma.
+Esta función permite al usuario ordenar de menor a mayor los servants de acuerdo a una estadística previamente ingresada en el programa, así como consultar los datos de la posición de los servants en la misma. La función utilizada es un merge sort de complejidad O(n log n).
 ### List
-Esta función permite al usuario crear su propia party, además de buscar qué datos están o no en ella, imprimir los datos completos de la misma, etc.
+Esta función permite al usuario crear su propia party, además de buscar qué datos están o no en ella, imprimir los datos completos de la misma, etc. Dicha estructura de datos es una lista doblemente ligada con sus distintas funciones de acceso, impresión y modificación que se especifican en los comentarios de cada clase.
 ### Tree:
-Esta función recibe la clase de un servant y una estadística que será el criterio por el que serán ordenado
+Esta función recibe la clase de un servant y una estadística que será el criterio por el que serán ordenado. Esta estructura implementa un BST que se crea en cuanto se manda a llamar la función, sus análisis se especifican en los comentarios de cada clase.
 ## Alumno:
 @alfredohuerta Erick Alfredo García Huerta - A01708119

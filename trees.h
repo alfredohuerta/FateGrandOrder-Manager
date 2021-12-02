@@ -42,7 +42,7 @@ TreeNode::TreeNode(vector<string> servant, TreeNode *le, TreeNode *ri)
 /*
 * Función recursica que borra los nodos del árbol.
 * 
-* @complejidad: O(n) -> aplicación de ciclo recursivo.
+* @complejidad: O(log n) -> aplicación de ciclo recursivo que ignora la mitad de los datos con cada ciclo
 * 
 * @param: 
 * 
@@ -87,7 +87,7 @@ int TreeNode::toInt(vector<string> servant, int index){
 * Función que añade datos a un nodo del árbol. Recibe el estring con todos los datos del servant, basado en el índice 
 * dado por el usuario convierte los datos en integers y el dato convertido lo compara para decidir qué dato irá donde.
 * 
-* @complejidad: O(n) -> se aplican ciclos recursivos.
+* @complejidad: O(log n) -> se aplican ciclos recursivos que ignoran la mitad de los datos del árbol con cada ciclo
 *
 * @param: vector<string> individual -> vector con los datos individuales del sercant.
 * @param: int index -> número de columna que marca el dato que dictará el valor a tomar en cuenta para el ordenamiento.
@@ -119,7 +119,7 @@ void TreeNode::add(vector<string> individual, int index){
 * Función que recibe los datos completos de un servant y el número de columna con los datos que determinan su posición 
 * en el árbol y que controla el ciclo recursivo de búsqueda.
 * 
-* @complejidad: O(n) -> aplica ciclo recursivo
+* @complejidad: O(log n) -> aplica ciclo recursivo que ignora la mitad de los datos con cada ciclo.
 * 
 * @param: vector<string> servant -> datos completos del servant.
 * @param: int index -> columna con la estadística a buscar.
@@ -143,7 +143,7 @@ bool TreeNode::find(vector<string> servant, int index){
 /**
  * @brief FUnción que recorre en orden todos los elementos del arbos y los almacena en un stringstream
  * 
- * @complejidad: O(n) -> aplicación de ciclos recursivos.
+ * @complejidad: O(log n) -> aplicación de ciclos recursivos que ignora la mitad de los datos con cada ciclo
  * 
  * @param aux string stream que almacena los datos de la hoja
  */
@@ -169,7 +169,7 @@ void TreeNode::inorder(stringstream &aux) const{
 /**
  * @brief Función simplificada que recorre en orden todos los elementos del arbos y los almacena en un stringstream
  * 
- * @complejidad: O(n) -> aplicación de ciclos recursivos.
+ * @complejidad: O(log n) -> aplicación de ciclos recursivos que ignora la mitad de los datos con cada ciclo
  * 
  * @param aux string stream que almacena los datos de la hoja
  */
@@ -301,7 +301,7 @@ void Tree::removeAll(){
 /*
 * Funcion que recoge la clase de un servant y lo inserta en el árbol, pasandolo a la función add de un nodo.
 *
-* @complejidad: O(n) -> implementación de ciclos recursivos
+* @complejidad: O(log n) -> implementación de ciclos recursivos que ignoran la mitad de los datos.
 * 
 * @param: string servantClass -> clase del servant que será agregado al árbol.
 * 
@@ -354,7 +354,7 @@ vector<string> Tree::find(string name, int stat){
 /**
  * @brief función que guarda los datos de un servant en un string stream
  * 
- * @complejidad: O(n) -> presencia de ciclo recursivo.
+ * @complejidad: O(n) -> presencia de ciclo recursivo que recorre todo el árbol
  * 
  * @return string datos del servant
  */
@@ -372,7 +372,7 @@ string Tree::printServant() const{
 /**
  * @brief función abrviada que guarda los primeros datos de un servant en un string stream
  * 
- * @complejidad: O(n) -> presencia de ciclo recursivo.
+ * @complejidad: O(n) -> presencia de ciclo recursivo que recorre todo el árbol
  * 
  * @return string datos del servant
  */

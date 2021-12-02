@@ -134,7 +134,8 @@ int main(){
             bool flag= true;
 
             cout << "Bienvenido al menú de creación de party's.\n"
-                    "Ingrese el nombre del servant para agregarlo en la party. ADVERTENCIA: Sólo se admiten cinco servants por party\n";
+                    "Ingrese el nombre del servant para agregarlo en la party. ADVERTENCIA: Sólo se admiten cinco servants por party\n"
+                    "[ADVERTENCIA] Al momento de escribir el nombre del servant, si tiene más de uno sepárelo por _\n";
                 do
                 {
                     cout << "Nombre de servant: ";

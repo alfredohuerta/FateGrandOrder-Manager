@@ -37,9 +37,21 @@ int main(){
     }
 
     //Menu de usuario.
-    int proceso;
+    int proceso, imprimir;
     List party;
     
+    cout << "Desea imprimir los nombres de los servants?" << endl << "1. Imprimir" << endl << "0. No imprimir" << endl;
+    cin >> imprimir;
+
+    if(imprimir == 1){
+        cout << "Nombres de los servants" << endl;
+
+        for(int i= 0; i < data.size(); i++){
+            cout << data[i][1] << ", ";
+        }
+    }
+
+    cout << "\n" << endl;
 
     cout << "Bienvenido al Administrador de Fate/Grand Order" << endl;
 
@@ -53,7 +65,6 @@ int main(){
     cin >> proceso;
     cout << "\n";
 
-    
     switch (proceso)
     {
     case 1: //Algoritmo de ordenamiento -> merge sort.
